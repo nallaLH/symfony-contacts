@@ -82,7 +82,22 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "start":    [
+            "Composer\\Config::disableProcessTimeout",
+            "symfony serve"
+        ],
+        "test:phpcs":   "php vendor/bin/php-cs-fixer fix --dry-run",
+        "fix:phpcs":    "php vendor/bin/php-cs-fixer fix",
+        "test:twigcs":  "twig vendor/bin/php-cs-fixer fix --dry-run",
+        "fix:twigcs":   "twig vendor/bin/php-cs-fixer fix"
+    },
+    "scripts-descriptions": {
+        "start":        "Lance le serveur local",
+        "test:phpcs":   "Lance la commande de vérification du code par PHP CS Fixer",
+        "fix:phpcs":    "Lance la commande de correction du code par PHP CS Fixer",
+        "test:twigcs":  "lance la commande de vérification du code par Twig CS Fixer",
+        "fix:twigcs":   "Lance la commande de correction du code par Twig CS Fixer"
     },
     "conflict": {
         "symfony/symfony": "*"

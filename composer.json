@@ -89,8 +89,8 @@
         ],
         "test:phpcs":   "php vendor/bin/php-cs-fixer fix --dry-run",
         "fix:phpcs":    "php vendor/bin/php-cs-fixer fix",
-        "test:twigcs":  "twig vendor/bin/php-cs-fixer fix --dry-run",
-        "fix:twigcs":   "twig vendor/bin/php-cs-fixer fix"
+        "test:twigcs":  "php vendor/bin/twig-cs-fixer lint",
+        "fix:twigcs":   "php vendor/bin/twig-cs-fixer lint --fix"
     },
     "scripts-descriptions": {
         "start":        "Lance le serveur local",

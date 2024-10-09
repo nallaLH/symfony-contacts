@@ -13,10 +13,19 @@ Lancer `composer install` pour installer [PHP Coding Standards Fixer](https://cs
 
 Configurer l'intégration de PHP Coding Standards Fixer dans PhpStorm en fixant le jeu de règles sur `Custom` et en désignant `.php-cs-fixer.php` comme fichier de configuration de règles de codage. 
 
+## Serveur Web local
 
+Lancez le serveur Web local avec cette commande :
+```bash
+composer start
+```
+### Accès au serveur Web
+Naviguez alors à partir de cette adresse : <https://127.0.0.1:8000/>
 
 ## Style de codage
 
 Le code suit la recommandation [Symfony](https://symfony.com/doc/current/contributing/code/standards.html) :
-- il peut être contrôlé avec `composer test:cs`
-- il peut être reformaté automatiquement avec `composer fix:cs`
+- il peut être contrôlé avec `composer test:phpcs`
+- il peut être reformaté automatiquement avec `composer fix:phpcs`
+- il peut être contrôlé avec `composer test:twigcs`
+- il peut être reformaté automatiquement avec `composer fix:twigcs`

@@ -16,17 +16,17 @@ class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/hello/{name}')]
+    #[Route('/hello/{name}', priority: 1)]
     public function world($name): Response
     {
         return $this->render('hello/world.html.twig', ['name' => $name]);
     }
 
-    #[Route('/hello/{name}/{times}', requirements: ['times' => '\d+'])]
+    #[Route('/hello/{name}/{times}', name: 'app_hello_manytimes', requirements: ['times' => '\d+'], priority: 2)]
     public function manyTimes($name, $times = 3): Response
     {
         if (0 == $times || 10 < $times) {
-            $times = 3;
+            return $this->redirectToRoute('app_hello_manytimes', ['name' => $name, 'times' => 3]);
         }
 
         return $this->render('hello/many_times.html.twig', ['name' => $name, 'times' => $times]);

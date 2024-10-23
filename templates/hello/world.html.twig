@@ -4,8 +4,10 @@
 
 {% block body %}
 
-    <h1>Hello World! ✅</h1>
+    <h1>Hello {{ name }}! ✅</h1>
 
-    This friendly message is coming from: {{ name }}
+    {% for i in 1..10 %}
+        <p style="color: {{ cycle(['red', 'green'], i) }}">Hello {{ name|capitalize }}! ({{ i | format_number({max_integer_digit:2, min_integer_digit:2}) }})</p>
+    {% endfor %}
 
 {% endblock %}

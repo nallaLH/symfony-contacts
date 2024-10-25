@@ -14,4 +14,10 @@ class ContactController extends AbstractController
     {
         return $this->render('contact/index.html.twig', ['contactRepository' => $contactRepository->findBy([], ['lastname' => 'ASC', 'firstname' => 'ASC'])]);
     }
+    #[Route('/contact/{contactId}', name: 'app_contact_show', requirements: ['contactId' => '\d+'])]
+    public function show(int $contactId, ContactRepository $contactRepository): Response
+    {
+        $contactId = $contactRepository->find($contactId);
+        return $this->render('contact/show.html.twig', ['contactId' => $contactId]);
+    }
 }

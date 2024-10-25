@@ -29,3 +29,8 @@ Le code suit la recommandation [Symfony](https://symfony.com/doc/current/contrib
 - il peut être reformaté automatiquement avec `composer fix:phpcs`
 - il peut être contrôlé avec `composer test:twigcs`
 - il peut être reformaté automatiquement avec `composer fix:twigcs`
+- il peut être contrôlé avec `composer test` qui teste la mise en forme PHP, Twig et lance les tests de Codeception
+
+## Codeception
+
+Nettoyez le répertoire output et lancez les tests Codeception avec `composer test:codeception`

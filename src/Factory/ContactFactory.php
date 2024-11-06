@@ -34,8 +34,12 @@ final class ContactFactory extends PersistentProxyObjectFactory
      *
      * @todo inject services if required
      */
+    private \Transliterator $transliterator;
+
     public function __construct()
     {
+        parent::__construct();
+        $this->transliterator = transliterator_create('Any-Lower; Latin-ASCII');
     }
 
     public static function class(): string
@@ -56,8 +60,7 @@ final class ContactFactory extends PersistentProxyObjectFactory
         return [
             'lastname' => $lastName,
             'firstname' => $firstName,
-            'email' => transliterator_transliterate('Any-Lower; Latin-ASCII', $firstName)
-                .'.'.transliterator_transliterate('Any-Lower; Latin-ASCII', $lastName)
+            'email' => $this->normalizeName($lastName).'.'.$this->normalizeName($firstName)
                 .'@'.self::faker()->domainName(),
         ];
     }
@@ -70,5 +73,10 @@ final class ContactFactory extends PersistentProxyObjectFactory
         return $this
             // ->afterInstantiate(function(Contact $contact): void {})
         ;
+    }
+
+    protected function normalizeName($string): string
+    {
+        return $this->transliterator->transliterate($string);
     }
 }

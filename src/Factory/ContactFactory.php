@@ -50,10 +50,15 @@ final class ContactFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
+        $lastName = self::faker()->lastName();
+        $firstName = self::faker()->firstName();
+
         return [
-            'email' => self::faker()->text(100),
-            'firstname' => self::faker()->text(30),
-            'lastname' => self::faker()->text(40),
+            'lastname' => $lastName,
+            'firstname' => $firstName,
+            'email' => transliterator_transliterate('Any-Lower; Latin-ASCII', $firstName)
+                .'.'.transliterator_transliterate('Any-Lower; Latin-ASCII', $lastName)
+                .'@'.self::faker()->domainName(),
         ];
     }
 

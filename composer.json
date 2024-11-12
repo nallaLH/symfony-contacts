@@ -94,8 +94,11 @@
         "test:twigcs":      "php vendor/bin/twig-cs-fixer lint",
         "fix:twigcs":       "php vendor/bin/twig-cs-fixer lint --fix",
         "test:codeception": [
-                            "php vendor/bin/codecept clean",
-                            "php vendor/bin/codecept run"
+            "php vendor/bin/codecept clean",
+            "php bin/console doctrine:database:drop --force --quiet --env=test",
+            "php bin/console doctrine:database:create --quiet --env=test",
+            "php bin/console doctrine:schema:create --quiet --env=test",
+            "php vendor/bin/codecept run"
         ],
         "test":     [
             "@test:phpcs",
@@ -115,7 +118,7 @@
         "fix:phpcs":        "Lance la commande de correction du code par PHP CS Fixer",
         "test:twigcs":      "lance la commande de vérification du code par Twig CS Fixer",
         "fix:twigcs":       "Lance la commande de correction du code par Twig CS Fixer",
-        "test:codeception": "Nettoie le répertoire output et le code généré par Codeception et qui lance les tests de Codeception",
+        "test:codeception": "Nettoie le répertoire output et le code généré par Codeception, force la destruction silencieuse puis crée silencieusement la BD, puis de son schéma avant de lancer les tests Codeception",
         "test":             "Lance le script qui teste la mise en forme PHP, la mise en forme Twig ainsi que les tests de Codeception",
         "db":               "Permet de détruire, puis de créer la BD, pour ensuite appliquer des migrations successives et enfin générer des données factices"
     },

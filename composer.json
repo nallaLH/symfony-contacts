@@ -101,6 +101,12 @@
             "@test:phpcs",
             "@test:twigcs",
             "@test:codeception"
+        ],
+        "db":       [
+            "php bin/console doctrine:database:drop --force --if-exists",
+            "php bin/console doctrine:database:create",
+            "php bin/console doctrine:migrations:migrate --no-interaction",
+            "php bin/console doctrine:fixtures:load --no-interaction"
         ]
     },
     "scripts-descriptions": {
@@ -110,7 +116,8 @@
         "test:twigcs":      "lance la commande de vérification du code par Twig CS Fixer",
         "fix:twigcs":       "Lance la commande de correction du code par Twig CS Fixer",
         "test:codeception": "Nettoie le répertoire output et le code généré par Codeception et qui lance les tests de Codeception",
-        "test":             "Lance le script qui teste la mise en forme PHP, la mise en forme Twig ainsi que les tests de Codeception"
+        "test":             "Lance le script qui teste la mise en forme PHP, la mise en forme Twig ainsi que les tests de Codeception",
+        "db":               "Permet de détruire, puis de créer la BD, pour ensuite appliquer des migrations successives et enfin générer des données factices"
     },
     "conflict": {
         "symfony/symfony": "*"

@@ -34,3 +34,7 @@ Le code suit la recommandation [Symfony](https://symfony.com/doc/current/contrib
 ## Codeception
 
 Nettoyez le répertoire output et lancez les tests Codeception avec `composer test:codeception`
+
+## Base de données
+
+Pour détruire la base de données, la créer, y générer des données factices tout en appliquant des migrations successives : `composer db`

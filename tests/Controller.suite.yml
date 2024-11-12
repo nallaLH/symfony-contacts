@@ -7,3 +7,5 @@ modules:
               app_path: 'src'
               environment: 'test'
         - Asserts:
+        - Doctrine:
+            cleanup: true

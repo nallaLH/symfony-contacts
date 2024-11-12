@@ -33,7 +33,7 @@ Le code suit la recommandation [Symfony](https://symfony.com/doc/current/contrib
 
 ## Codeception
 
-Nettoyez le répertoire output et lancez les tests Codeception avec `composer test:codeception`
+Nettoyer le répertoire output et le code généré par Codeception, forcer la destruction silencieuse puis créer silencieusement la BD, puis de son schéma avant de lancer les tests Codeception `composer test:codeception`
 
 ## Base de données
 

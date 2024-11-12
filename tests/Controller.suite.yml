@@ -9,3 +9,5 @@ modules:
         - Asserts:
         - Doctrine:
             cleanup: true
+        - \App\Tests\Support\Helper\EntityManagerReset:
+            depends: Symfony

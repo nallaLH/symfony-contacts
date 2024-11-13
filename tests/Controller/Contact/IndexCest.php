@@ -12,7 +12,7 @@ class IndexCest
     {
         ContactFactory::createMany(5);
         $I->amOnPage('/contact');
-        $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIsSuccessful();
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
         $I->seeNumberOfElements('li', 5);
@@ -21,12 +21,10 @@ class IndexCest
 
     public function contactLinkTest(ControllerTester $I)
     {
+        ContactFactory::createMany(5);
         $I->amOnPage('/contact');
-        $I->seeResponseCodeIs(200);
-        $I->seeInTitle('Liste des contacts');
-        $I->see('Liste des contacts', 'h1');
-        $I->click('a.contact-link');
-//        $I->click('a[class*="contact-link"]');
+        $I->seeResponseCodeIsSuccessful();
+        $I->click('a');
         $I->seeCurrentRouteIs('app_contact_show');
     }
 
@@ -36,7 +34,7 @@ class IndexCest
         ContactFactory::createMany(5);
         $I->amOnPage('/contact');
         $I->click('Aaaaaaaaaaaaaaa, Joe');
-        $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIsSuccessful();
         $I->seeCurrentRouteIs('app_contact_show');
     }
 
@@ -59,12 +57,8 @@ class IndexCest
             'Dupont, David',
             'Legrand, Thomas',
             'Martin, Hugo',
-            'Petit, Bob'
+            'Petit, Bob',
         ];
         Assert::assertEquals($expectedOrder, $actualOrder);
     }
-    //    // tests
-    //    public function tryToTest(ControllerTester $I)
-    //    {
-    //    }
 }

@@ -75,10 +75,6 @@ final class ContactFactory extends PersistentProxyObjectFactory
         ;
     }
 
-    /**
-     * @param $string
-     * @return string
-     */
     protected function normalizeName($string): string
     {
         return $this->transliterator->transliterate($string);

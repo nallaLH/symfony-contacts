@@ -12,10 +12,6 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         header('HTTP/1.1 303 See Other');
-        header('Location: /contact');
-
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        return $this->redirectToRoute('app_contact');
     }
 }

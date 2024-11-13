@@ -15,7 +15,7 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('li', 5);
+        $I->seeNumberOfElements('ul > li', 5);
         $I->seeNumberOfElements('a', 5);
     }
 

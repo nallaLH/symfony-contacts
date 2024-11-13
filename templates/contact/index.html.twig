@@ -8,7 +8,7 @@
 
     <ul>
     {% for contact in contactRepository %}
-        <li><a class="contact-link" href="{{ path('app_contact_show', {id: contact.id}) }}">{{ contact.lastname }}, {{ contact.firstname }}</a></li>
+        <li><a class="contact-link" href="{{ path('app_contact_show', {id: contact.id}) }}"><span class="lastname">{{ contact.lastname }}</span>, <span class="firstname">{{ contact.firstname }}</span></a></li>
     {% endfor %}
     </ul>
 

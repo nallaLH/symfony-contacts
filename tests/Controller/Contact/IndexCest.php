@@ -15,8 +15,8 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('ul > li', 5);
-        $I->seeNumberOfElements('a', 5);
+        $I->seeNumberOfElements('ul.contacts > li', 5);
+        $I->seeNumberOfElements('a.contact', 5);
     }
 
     public function contactLinkTest(ControllerTester $I)
@@ -24,7 +24,7 @@ class IndexCest
         ContactFactory::createMany(5);
         $I->amOnPage('/contact');
         $I->seeResponseCodeIsSuccessful();
-        $I->click('a');
+        $I->click('a.contact');
         $I->seeCurrentRouteIs('app_contact_show');
     }
 
@@ -51,7 +51,7 @@ class IndexCest
         );
 
         $I->amOnPage('/contact');
-        $actualOrder = $I->grabMultiple('a');
+        $actualOrder = $I->grabMultiple('a.contact');
         $expectedOrder = [
             'Dupont, Alice',
             'Dupont, David',

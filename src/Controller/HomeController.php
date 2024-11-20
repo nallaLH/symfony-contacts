@@ -12,6 +12,7 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         header('HTTP/1.1 303 See Other');
+
         return $this->redirectToRoute('app_contact');
     }
 }

@@ -61,4 +61,21 @@ class IndexCest
         ];
         Assert::assertEquals($expectedOrder, $actualOrder);
     }
+
+    public function searchTest(ControllerTester $I)
+    {
+        ContactFactory::createSequence(
+            [
+                ['lastName' => 'Dupont', 'firstName' => 'Alice'],
+                ['lastName' => 'Martin', 'firstName' => 'Hugo'],
+                ['lastName' => 'Legrand', 'firstName' => 'Thomas'],
+                ['lastName' => 'Therese', 'firstName' => 'David'],
+            ]
+        );
+        $I->amOnPage('/contact?search=th');
+        $I->seeResponseCodeIsSuccessful();
+        $I->see('Therese, David');
+        $I->see('Legrand, Thomas');
+        $I->seeNumberOfElements('a.contact', 2);
+    }
 }

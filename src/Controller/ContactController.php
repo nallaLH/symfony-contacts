@@ -7,15 +7,14 @@ use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(ContactRepository $contactRepository, Request $request): Response
+    public function index(ContactRepository $contactRepository, #[MapQueryParameter] string $search = ''): Response
     {
-        $search = $request->query->get('search', '');
-
         return $this->render('contact/index.html.twig', [
             'contacts' => $contactRepository->search($search),
             'search' => $search,

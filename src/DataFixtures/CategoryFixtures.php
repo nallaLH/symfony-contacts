@@ -18,4 +18,11 @@ class CategoryFixtures extends Fixture
             CategoryFactory::createOne($category);
         }
     }
+
+    public function getDependencies(): array
+    {
+        return [
+            ContactFixtures::class,
+        ];
+    }
 }

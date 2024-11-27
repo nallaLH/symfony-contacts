@@ -18,5 +18,4 @@ class CategoryFixtures extends Fixture
             CategoryFactory::createOne($category);
         }
     }
-
 }

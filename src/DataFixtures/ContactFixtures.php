@@ -23,6 +23,7 @@ class ContactFixtures extends Fixture implements DependentFixtureInterface
             return $category;
         });
     }
+
     public function getDependencies(): array
     {
         return [

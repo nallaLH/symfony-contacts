@@ -56,14 +56,13 @@ final class ContactFactory extends PersistentProxyObjectFactory
     {
         $lastName = self::faker()->lastName();
         $firstName = self::faker()->firstName();
-        $phone = self::faker()->phoneNumber();
 
         return [
             'lastname' => $lastName,
             'firstname' => $firstName,
             'email' => $this->normalizeName($lastName).'.'.$this->normalizeName($firstName)
                 .'@'.self::faker()->domainName(),
-            'phone' => $phone,
+            'phone' => self::faker()->phoneNumber(),
         ];
     }
 

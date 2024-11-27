@@ -51,6 +51,7 @@ final class CategoryFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         $word = mb_convert_case(self::faker()->word(), MB_CASE_TITLE);
+
         return [
             'name' => $word,
         ];

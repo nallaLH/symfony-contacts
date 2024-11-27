@@ -1,0 +1,8 @@
+<ul class="contacts">
+    {% for contact in contacts %}
+        <li><a href="{{ path('app_contact_show', {id: contact.id}) }}"
+               class="contact"><span class="lastname"
+                >{{ contact.lastname }}</span>, <span class="firstname"
+                >{{ contact.firstname }}</span></a></li>
+    {% endfor %}
+</ul>

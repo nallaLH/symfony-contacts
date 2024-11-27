@@ -19,10 +19,4 @@ class CategoryFixtures extends Fixture
         }
     }
 
-    public function getDependencies(): array
-    {
-        return [
-            ContactFixtures::class,
-        ];
-    }
 }

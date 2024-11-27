@@ -5,11 +5,12 @@ namespace App\DataFixtures;
 use App\Factory\CategoryFactory;
 use App\Factory\ContactFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 use function Zenstruck\Foundry\faker;
 
-class ContactFixtures extends Fixture
+class ContactFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -21,5 +22,11 @@ class ContactFixtures extends Fixture
 
             return $category;
         });
+    }
+    public function getDependencies(): array
+    {
+        return [
+            CategoryFixtures::class,
+        ];
     }
 }

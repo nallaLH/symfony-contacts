@@ -8,7 +8,9 @@
 
     <ul class="list-group">
         {% for category in categories %}
-            <li class="list-group-item">{{ category.name }}</li>
+            <li class="list-group-item"
+            ><a href="{{ path('app_category_show', {id: category.id}) }}"
+            >{{ category.name }}</a></li>
         {% endfor %}
     </ul>
 

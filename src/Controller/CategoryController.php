@@ -13,8 +13,10 @@ class CategoryController extends AbstractController
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $categoryRepository): Response
     {
+        $categoriesAndCount = $categoryRepository->findAllOrderedByNameWithContactCount();
+
         return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
+            'categories_and_count' => $categoriesAndCount,
         ]);
     }
 

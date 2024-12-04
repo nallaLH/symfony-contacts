@@ -17,6 +17,7 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
         ]);
     }
+
     #[Route('/category/{id}', name: 'app_category_show', requirements: ['id' => '\d+'])]
     public function show(Category $category): Response
     {

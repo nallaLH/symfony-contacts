@@ -7,7 +7,7 @@
     <h1>Hello {{ name }}! ✅</h1>
 
     {% for i in 1..10 %}
-        <p style="color: {{ cycle(['red', 'green'], i) }}">Hello {{ name|capitalize }}! ({{ i | format_number({max_integer_digit:2, min_integer_digit:2}) }})</p>
+        <p style="color: {{ cycle(['red', 'green'], i) }}">Hello {{ name|capitalize }}! ({{ i|format_number({max_integer_digit: 2, min_integer_digit: 2}) }})</p>
     {% endfor %}
 
 {% endblock %}

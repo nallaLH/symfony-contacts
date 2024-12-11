@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
-{% set title = 'Édition de ' ~ {{ contact.lastname }} ~', ' ~ {{ contact.firstname }} %}
+{% set title = 'Édition de ' ~ contact.lastname ~', ' ~ contact.firstname %}
 {% block title %}
     {{ title }}
 {% endblock %}
 
 {% block body %}
     <h1>{{ title }}</h1>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
 {% endblock %}
 
 

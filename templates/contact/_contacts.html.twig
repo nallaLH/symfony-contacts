@@ -7,7 +7,7 @@
                 > <span class="badge text-bg-secondary"
                 >{% if contact.category %}
                 <a class="nav-link" href="{{ path('app_category_show', {id: contact.category.id}) }}"
-                >{{ contact.category ? contact.category.name }}</a>
+                >{{ contact.category.name }}</a>
                 {% endif %}</span>
         </li>
     {% endfor %}

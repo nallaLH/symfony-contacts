@@ -27,8 +27,10 @@ class ContactRepository extends ServiceEntityRepository
     public function search(string $searched): array
     {
         $qb = $this->createQueryBuilder('c')
+            ->leftJoin('c.category', 'cat')
             ->orderBy('c.lastname', 'ASC')
-            ->addOrderBy('c.firstname', 'ASC');
+            ->addOrderBy('c.firstname', 'ASC')
+            ->addSelect('cat');
 
         if ($searched) {
             $qb->where('c.lastname LIKE :searched')

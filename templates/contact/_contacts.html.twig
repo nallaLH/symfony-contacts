@@ -5,7 +5,7 @@
                 >{{ contact.lastname }}</span>, <span class="firstname"
                 >{{ contact.firstname }}</span></a
                 > <span class="badge text-bg-secondary"
-                >{% if show_category??true and contact.category %}
+                >{% if show_category ?? true and contact.category %}
                 <a class="nav-link" href="{{ path('app_category_show', {id: contact.category.id}) }}"
                 >{{ contact.category.name }}</a>
                 {% endif %}</span>

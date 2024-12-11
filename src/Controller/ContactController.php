@@ -34,6 +34,7 @@ class ContactController extends AbstractController
     public function update(Contact $contact): Response
     {
         $form = $this->createForm(ContactType::class, $contact);
+
         return $this->render('contact/update.html.twig', [
             'contact' => $contact,
             'form' => $form->createView(),

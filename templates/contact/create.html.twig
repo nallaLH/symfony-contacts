@@ -1,5 +1,5 @@
 {% block body %}
 
-    {{ include('contact/_form.html.twig', {'submit_label': 'Créer', 'form': form}, with_context = false) }}
+    {{ include('contact/_form.html.twig', {submit_label: 'Modifier', form: form, title: 'Création d\'un nouveau contact'}, with_context = false) }}
 
 {% endblock %}

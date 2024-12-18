@@ -50,9 +50,22 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/create', name: 'app_contact_create', requirements: ['id' => '\d+'])]
-    public function create(): Response
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('contact/create.html.twig');
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_contact_show', ['id' => $contact->getId()]);
+        }
+
+        return $this->render('contact/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/contact/{id}/delete', name: 'app_contact_delete', requirements: ['id' => '\d+'])]

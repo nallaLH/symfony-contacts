@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Création d\'un nouveau contact' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.firstname, {label: 'Prénom'}) }}
+    {{ form_row(form.lastname, {label: 'Nom'}) }}
+    {{ form_row(form.email, {label: 'Adresse mail'}) }}
+    {{ form_row(form.phone, {label: 'Téléphone'}) }}
+    {{ form_row(form.category, {label: 'Catégorie', placeholder: 'Catégorie ?'}) }}
+    <button type="submit" class="btn btn-outline-success w-100 p-3">{{ submit_label }}</button>
+    {{ form_end(form) }}
+{% endblock %}

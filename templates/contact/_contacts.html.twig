@@ -1,9 +1,12 @@
 <ul class="contacts">
     {% for contact in contacts %}
-        <li><a href="{{ path('app_contact_show', {id: contact.id}) }}"
-               class="contact"><span class="lastname"
-                ><span class="material-symbols-outlined"
-                >edit</span>{{ contact.lastname }}</span>, <span class="firstname"
+                <li><a href="{{ path('app_contact_update', {id: contact.id}) }}"
+                ><span class="material-symbols-outlined">edit</span></a
+                ><a href="{{ path('app_contact_delete', {id: contact.id}) }}"
+                ><span class="material-symbols-outlined">delete</span></a
+                ><a href="{{ path('app_contact_show', {id: contact.id}) }}"
+                class="contact"><span class="lastname"
+                >{{ contact.lastname }}</span>, <span class="firstname"
                 >{{ contact.firstname }}</span></a
                 > <span class="badge text-bg-secondary"
                 >{% if show_category ?? true and contact.category %}

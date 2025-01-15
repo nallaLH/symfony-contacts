@@ -16,7 +16,7 @@ class UpdateCest
 
         $I->amOnPage('/contact/1/update');
 
-        $I->seeInTitle('Édition de Simpson, Homer');
-        $I->see('Édition de Simpson, Homer', 'h1');
+        $I->seeInTitle('Modification d\'un contact');
+        $I->see('Modification d\'un contact', 'h1');
     }
 }

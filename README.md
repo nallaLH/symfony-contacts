@@ -38,3 +38,13 @@ Nettoyer le répertoire output et le code généré par Codeception, forcer la d
 ## Base de données
 
 Pour détruire la base de données, la créer, y générer des données factices tout en appliquant des migrations successives : `composer db`
+
+## Utilisateurs de démonstration
+
+Pour vous connecter en tant qu'admin :
+- email : root@example.com
+- mdp : test
+
+Pour vous connecter en tant qu'utilisateur : 
+- email : user@example.com
+- mdp : test

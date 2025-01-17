@@ -29,8 +29,13 @@
                 </ul>
                 <form class="d-flex" role="search" action="{{ path('app_contact') }}">
                     <input class="form-control me-2" type="search" name="search" placeholder="{{ search|default('') }}" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                    <button class="btn btn-outline-success me-2" type="submit">Rechercher</button>
                 </form>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-danger">Se connecter</a>
+                {% endif %}
             </div>
         </div>
     </nav>

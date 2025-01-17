@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ContactController extends AbstractController
 {
@@ -33,6 +34,7 @@ class ContactController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/contact/{id}/update', name: 'app_contact_update', requirements: ['id' => '\d+'])]
     public function update(Contact $contact, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -50,6 +52,7 @@ class ContactController extends AbstractController
         ]);
     }
 
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route('/contact/create', name: 'app_contact_create', requirements: ['id' => '\d+'])]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -69,6 +72,7 @@ class ContactController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/contact/{id}/delete', name: 'app_contact_delete', requirements: ['id' => '\d+'])]
     public function delete(Contact $contact, EntityManagerInterface $entityManager, Request $request): Response
     {

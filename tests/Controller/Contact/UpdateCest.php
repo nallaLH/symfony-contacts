@@ -36,4 +36,18 @@ class UpdateCest
         $I->amOnPage("/contact/{$contactId}/update");
         $I->seeCurrentRouteIs('app_login');
     }
+
+    public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
+    {
+        $contact = ContactFactory::createOne();
+        $user = UserFactory::createOne(
+            [
+                'roles' => ['ROLE_USER'],
+            ]
+        )->_real();
+        $I->amLoggedInAs($user);
+        $contactId = $contact->getId();
+        $I->amOnPage("/contact/{$contactId}/update");
+        $I->seeResponseCodeIs(403);
+    }
 }

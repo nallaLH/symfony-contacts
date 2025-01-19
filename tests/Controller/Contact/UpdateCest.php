@@ -28,4 +28,12 @@ class UpdateCest
         $I->seeInTitle('Modification d\'un contact');
         $I->see('Modification d\'un contact', 'h1');
     }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $contact = ContactFactory::createOne();
+        $contactId = $contact->getId();
+        $I->amOnPage("/contact/{$contactId}/update");
+        $I->seeCurrentRouteIs('app_login');
+    }
 }

@@ -20,4 +20,10 @@ class CreateCest
         $I->seeInTitle("Création d'un nouveau contact");
         $I->see("Création d'un nouveau contact", 'h1');
     }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $I->amOnPage('/contact/create');
+        $I->seeCurrentRouteIs('app_login');
+    }
 }

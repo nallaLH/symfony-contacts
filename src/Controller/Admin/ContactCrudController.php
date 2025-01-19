@@ -22,7 +22,7 @@ class ContactCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->hideOnForm(),
             TextField::new('firstname'),
             TextField::new('lastname'),
             AssociationField::new('category')
@@ -34,7 +34,10 @@ class ContactCrudController extends AbstractCrudController
                         return $entityRepository->createQueryBuilder('c')
                             ->orderBy('c.name', 'ASC');
                     },
-                ]),
+                ])
+            ->formatValue(function ($value, $entity) {
+                return $entity->getCategory()?->getName() ?? 'Sans catégorie';
+            }),
             EmailField::new('email'),
             TelephoneField::new('phone'),
         ];

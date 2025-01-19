@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\Contact;
+use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -29,8 +30,11 @@ class ContactCrudController extends AbstractCrudController
                 [
                     'class' => Category::class,
                     'choice_label' => 'name',
-                ]
-            ),
+                    'query_builder' => function (EntityRepository $entityRepository) {
+                        return $entityRepository->createQueryBuilder('c')
+                            ->orderBy('c.name', 'ASC');
+                    },
+                ]),
             EmailField::new('email'),
             TelephoneField::new('phone'),
         ];

@@ -34,19 +34,28 @@ class UserCrudController extends AbstractCrudController
             TextField::new('lastname'),
             EmailField::new('email'),
             TextField::new('password')
-            ->onlyOnForms()
-            ->setFormType(PasswordType::class)
-            ->setFormTypeOptions(
-                [
-                    'required' => false,
-                    'mapped' => false,
-                    'empty_data' => '',
-                    'attr' => ['autocomplete' => 'new-password'],
-                ]
-            ),
-            ArrayField::new('roles'),
+                ->onlyOnForms()
+                ->setFormType(PasswordType::class)
+                ->setFormTypeOptions(
+                    [
+                        'required' => false,
+                        'mapped' => false,
+                        'empty_data' => '',
+                        'attr' => ['autocomplete' => 'new-password'],
+                    ]
+                ),
+            ArrayField::new('roles')
+                ->formatValue(function ($value) {
+                    if (in_array('ROLE_ADMIN', $value)) {
+                        return '<span class="material-symbols-outlined">manage_accounts</span>';
+                    } elseif (in_array('ROLE_USER', $value)) {
+                        return '<span class="material-symbols-outlined">person</span>';
+                    }
+                    return '';
+                }),
         ];
     }
+
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $this->setUserPassword($entityInstance);
